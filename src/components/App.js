@@ -25,6 +25,18 @@ function App() {
     setQuestions(remainingQuestions)
   }
 
+  const handleUpdatedQuestion = (updatedQuestion) => {
+    const updatedQuestions = questions.map((question) => {
+      if(question.id === updatedQuestion.id){
+        return updatedQuestion
+      }
+      else{
+        return question
+      }
+    })
+    setQuestions(updatedQuestions)
+  }
+
   return (
     <main>
       <AdminNavBar onChangePage={setPage} />
@@ -33,6 +45,7 @@ function App() {
         : <QuestionList 
             questions={questions}
             handleDeletedQuestion={handleDeletedQuestion}
+            handleUpdatedQuestion={handleUpdatedQuestion}
           />}
     </main>
   );
